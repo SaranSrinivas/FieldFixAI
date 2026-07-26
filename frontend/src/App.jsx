@@ -1,15 +1,17 @@
 import { useEffect } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import { AppStateProvider, useAppState } from './context/AppStateContext'
-import { DocumentIcon, PulseIcon, SearchIcon } from './components/icons'
+import { DocumentIcon, InfoIcon, PulseIcon, SearchIcon } from './components/icons'
 import HomePage from './pages/HomePage'
 import KnowledgePage from './pages/KnowledgePage'
 import InsightsPage from './pages/InsightsPage'
+import AboutPage from './pages/AboutPage'
 
 const NAV_ITEMS = [
   { to: '/', label: 'AI Search', icon: SearchIcon, end: true },
   { to: '/knowledge', label: 'Knowledge', icon: DocumentIcon, end: false },
   { to: '/insights', label: 'Insights', icon: PulseIcon, end: false },
+  { to: '/about', label: 'About', icon: InfoIcon, end: false },
 ]
 
 function AppShell() {
@@ -92,6 +94,7 @@ function AppShell() {
           <Route path="/" element={<HomePage />} />
           <Route path="/knowledge" element={<KnowledgePage />} />
           <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
     </div>

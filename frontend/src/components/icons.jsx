@@ -110,6 +110,16 @@ export function LightbulbIcon({ className = 'h-5 w-5' }) {
   )
 }
 
+export function InfoIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <circle cx="12" cy="12" r="8.25" />
+      <path strokeLinecap="round" d="M12 11v5.5" />
+      <circle cx="12" cy="8" r="0.6" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 export function NoteIcon({ className = 'h-5 w-5' }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
