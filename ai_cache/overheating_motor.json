@@ -1,0 +1,25 @@
+{
+  "causes": [
+    "Perform full chamber alignment.",
+    "Update firmware via AI Fleet Console.",
+    "Perform full terrain\u2010response calibration.",
+    "Power on MU\u201018 motor unit."
+  ],
+  "temporary_fixes": [
+    "6.3 Monthly Maintenance\n\nReplace jaw plate wear inserts.",
+    "6.2 Weekly Maintenance\n\nReplace air scrubber filters.",
+    "6.3 Monthly Maintenance\n\nReplace QS\u20103100 shock fluid.",
+    "6.2 Weekly Maintenance\n\nReplace dust filter pads."
+  ],
+  "diagnostics": [
+    "When the gearbox whines during startup only, check the oil viscosity before replacing bearings.",
+    "Check haul bed hinge points.",
+    "Inspect drivetrain cooling system.",
+    "Run AI\u2010guided Suspension Health Scan."
+  ],
+  "safety_notes": [
+    "Inspect feed hopper for debris.",
+    "Re\u2010run jam scan to confirm chamber clearance.",
+    "SECTION 6 \u2014 MAINTENANCE\n\n6.1 Daily Maintenance\n\nClean feed hopper lining."
+  ]
+}

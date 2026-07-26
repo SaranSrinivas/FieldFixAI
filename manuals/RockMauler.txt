@@ -1,0 +1,303 @@
+RockMauler™ CR‐220 Excavation Crusher
+
+OEM Field Manual — Volume 2
+
+AI‐Augmented Field Engineer Edition
+
+SECTION 1 — SAFETY & COMPLIANCE
+
+1.1 General Safety
+
+Only certified mining/construction personnel may operate or service the 
+
+CR‐220.
+
+Always perform Lockout/Tagout before accessing the crusher chamber or rotor 
+
+assembly.
+
+Maintain a minimum 4 m clearance around the feed hopper during operation.
+
+Wear Class‐IV PPE: reinforced gloves, dust respirator, anti‐vibration boots.
+
+1.2 Hazard Zones
+
+Red Zone: Crusher chamber (crush hazard, high‐impact surfaces).
+
+Orange Zone: Rotor assembly (entanglement hazard).
+
+Yellow Zone: Feed hopper (fall‐in hazard).
+
+1.3 AI‐Assisted Safety
+
+The AI Field Engineer Tool automatically:
+
+Detects chamber pressure spikes indicating imminent jams.
+
+Predicts rotor overload conditions using torque harmonics.
+
+Flags unsafe feed patterns (oversized rocks, uneven loading).
+
+SECTION 2 — SYSTEM OVERVIEW
+
+2.1 Machine Description
+
+The RockMauler™ CR‐220 is a mid‐capacity excavation crusher designed for breaking 
+
+down rock, ore, and construction debris directly at the job site. Its dual‐jaw system and 
+
+rotor assembly provide high throughput with minimal downtime.
+
+2.2 Core Subsystems
+
+Crushing System: Dual jaw plates + RA‐220 rotor
+
+Powertrain: MU‐18 motor + BD‐Flex belt drive
+
+Control System: Shock‐resistant operator console
+
+Sensor Array: Chamber pressure, rotor speed, jam detection
+
+SECTION 3 — BILL OF MATERIALS (BOM)
+
+3.1 Structural Assembly
+
+Crusher Housing (Impact‐Grade Steel)
+
+Feed Hopper (Anti‐Abrasion Lining)
+
+Discharge Chute (Vibro‐Assist)
+
+3.2 Crushing System
+
+Dual Jaw Plates (Titanium‐Carbide)
+
+Rotor Assembly RA‐220
+
+Chamber Alignment Rails
+
+Jam‐Release Actuator (JRA‐10)
+
+3.3 Powertrain
+
+Motor Unit MU‐18 (18 kW)
+
+Belt Drive System (BD‐Flex)
+
+Cooling Fan Assembly (CF‐220)
+
+3.4 Sensor & Control
+
+Chamber Pressure Sensors (CPS‐3)
+
+Rotor Speed Sensor (RSS‐5)
+
+Jam Detection Array (JDA‐2)
+
+Operator Console (Shock‐Resistant)
+
+3.5 Consumables
+
+Jaw Plate Wear Inserts
+
+Belt Lubricant
+
+Dust Filter Pads
+
+SECTION 4 — OPERATING PROCEDURES
+
+4.1 Startup Sequence
+
+1. Inspect feed hopper for debris.
+
+2. Power on MU‐18 motor unit.
+
+3. Run AI‐Assisted Rotor Calibration (8 seconds).
+
+4. Activate belt drive system.
+
+5. Begin controlled feeding of material.
+
+4.2 Crushing Workflow
+
+Maintain rotor speed between 1,200–1,450 RPM.
+
+AI flags oversized material before chamber entry.
+
+Use Vibro‐Assist discharge mode for wet or clay‐heavy loads.
+
+SECTION 5 — FIELD DIAGNOSTICS
+
+5.1 Common Failures
+
+Chamber jams
+
+Rotor torque overload
+
+Belt slippage
+
+Jaw plate misalignment
+
+5.2 AI‐Assisted Diagnostics
+
+The AI tool provides:
+
+Chamber pressure spike graphs
+
+Rotor torque harmonic analysis
+
+Belt tension prediction
+
+Jaw alignment deviation mapping
+
+5.3 Field Repair Procedure: Clearing a Chamber Jam
+
+1. Activate AI Jam Scan.
+
+2. AI identifies jam type (material blockage, misaligned jaw, rotor obstruction).
+
+3. Engage Jam‐Release Actuator (JRA‐10).
+
+4. Remove obstructing material manually if safe.
+
+5. Inspect jaw plates for wear >35%.
+
+6. Re‐run jam scan to confirm chamber clearance.
+
+SECTION 6 — MAINTENANCE
+
+6.1 Daily Maintenance
+
+Clean feed hopper lining.
+
+Inspect jaw plate wear.
+
+Check belt tension.
+
+6.2 Weekly Maintenance
+
+Replace dust filter pads.
+
+Lubricate belt drive system.
+
+Run AI‐guided Rotor Health Scan.
+
+6.3 Monthly Maintenance
+
+Replace jaw plate wear inserts.
+
+Perform full chamber alignment.
+
+Update firmware via AI Fleet Console.
+
+SECTION 7 — TROUBLESHOOTING MATRIX
+
+Issue
+
+Likely 
+
+AI 
+
+Field Fix
+
+Cause
+
+Diagnosti
+
+c Output
+
+Chamber 
+
+Oversized 
+
+Pressure 
+
+Clear jam, 
+
+Jam
+
+material
+
+spike 
+
+graph
+
+inspect 
+
+jaws
+
+Rotor 
+
+Material 
+
+Torque 
+
+Reduce 
+
+Overload
+
+density 
+
+harmonic 
+
+feed rate
+
+spike
+
+distortion
+
+Belt 
+
+Low 
+
+Belt 
+
+Adjust 
+
+Slippage
+
+tension
+
+tension 
+
+BD‐Flex 
+
+warning
+
+tension
+
+Jaw 
+
+Wear or 
+
+Alignment 
+
+Replace 
+
+Misalignm
+
+impact
+
+deviation 
+
+inserts
+
+ent
+
+map
+
+SECTION 8 — TECHNICAL SPECIFICATIONS
+
+Rotor Speed: 1,450 RPM max
+
+Jaw Force: 22,000 N
+
+Motor Power: 18 kW
+
+Throughput: 18–24 tons/hr
+
+Operating Temp: −15°C to 60°C
+
+Weight: 6,800 kg
+
+

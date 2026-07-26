@@ -1,0 +1,299 @@
+TerraBore™ MB‐4400 Mining Blast Drill Rig
+
+OEM Field Manual — Volume 1
+
+AI‐Augmented Field Engineer Edition
+
+SECTION 1 — SAFETY & COMPLIANCE
+
+1.1 General Safety
+
+Only certified field engineers may operate or service the MB‐4400.
+
+Always perform Lockout/Tagout before accessing hydraulic or drill components.
+
+Maintain a minimum 5 m clearance around the drill mast during operation.
+
+Wear Class‐IV mining PPE: respirator, vibration‐rated gloves, reinforced boots.
+
+1.2 Hazard Zones
+
+Red Zone: Active drilling radius (high‐velocity debris).
+
+Orange Zone: Hydraulic line cluster (burst risk).
+
+Yellow Zone: Stabilizer outriggers (crush hazard).
+
+1.3 AI‐Assisted Safety
+
+The AI Field Engineer Tool automatically:
+
+Flags unstable ground conditions using vibration mapping.
+
+Predicts mast oscillation hazards.
+
+Issues thermal overload warnings for hydraulic components.
+
+SECTION 2 — SYSTEM OVERVIEW
+
+2.1 Machine Description
+
+The TerraBore™ MB‐4400 is a high‐precision blast‐drill rig designed for deep mining 
+
+operations requiring accurate bore placement, high torque output, and stable drilling on 
+
+uneven terrain.
+
+2.2 Core Subsystems
+
+Drill System: BoreHead BH‐2200 rotary assembly
+
+Hydraulic System: HP‐900 high‐pressure pump
+
+Control System: Ruggedized operator console
+
+Sensor Array: Oscillation, depth, thermal, torque
+
+SECTION 3 — BILL OF MATERIALS (BOM)
+
+3.1 Structural Assembly
+
+Chassis Frame (Reinforced Alloy‐X)
+
+Stabilizer Outriggers (Hydraulic‐Lock Type)
+
+Drill Mast Column (Tri‐Segment Telescopic)
+
+3.2 Drill System
+
+BoreHead BH‐2200 Rotary Drill
+
+Carbide Drill Bit Set (Ø 150–300 mm)
+
+Torque Transfer Couplings (TT‐Series)
+
+Vibration Dampening Rings (VD‐44)
+
+3.3 Hydraulic System
+
+HydroPump HP‐900 (9000 PSI)
+
+Dual‐Stage Pressure Regulator
+
+Hydraulic Line Set (High‐Temp Rated)
+
+Fluid Reservoir (45 L, Heat‐Shielded)
+
+3.4 Sensor & Control
+
+Oscillation Sensor Pack (OS‐7)
+
+Depth Mapping Array (DMA‐4)
+
+Thermal Load Sensors (TLS‐2)
+
+Control Console (Ruggedized)
+
+3.5 Consumables
+
+Hydraulic Fluid HX‐ThermaGrade
+
+Drill Bit Lubricant
+
+Dust Suppression Cartridges
+
+SECTION 4 — OPERATING PROCEDURES
+
+4.1 Startup Sequence
+
+1. Engage stabilizer outriggers.
+
+2. Power on the control console.
+
+3. Run Self‐Calibration Cycle (12 seconds).
+
+4. Select drill bit size.
+
+5. Initiate Ground Stability Scan (AI‐assisted).
+
+6. Begin drilling.
+
+4.2 Drilling Workflow
+
+Maintain torque within 70–85% of rated load.
+
+AI flags deviations above 0.8 mm oscillation.
+
+Use dust suppression cartridges for deep bores.
+
+SECTION 5 — FIELD DIAGNOSTICS
+
+5.1 Common Failures
+
+Mast oscillation
+
+Torque instability
+
+Hydraulic pressure drop
+
+Depth sensor drift
+
+5.2 AI‐Assisted Diagnostics
+
+The AI tool provides:
+
+Oscillation heatmaps
+
+Torque waveform analysis
+
+Hydraulic leak prediction
+
+Depth sensor recalibration
+
+5.3 Field Repair Procedure: Stabilizing Mast Oscillation
+
+1. Activate AI Oscillation Scan.
+
+2. AI identifies oscillation source (mast segment, couplings, ground instability).
+
+3. Tighten mast segment clamps to AI‐recommended torque values.
+
+4. Replace dampening rings if wear exceeds 40%.
+
+5. Re‐run oscillation scan to confirm stability.
+
+SECTION 6 — MAINTENANCE
+
+6.1 Daily Maintenance
+
+Inspect drill bit wear.
+
+Check hydraulic line temperature.
+
+Clean sensor array.
+
+6.2 Weekly Maintenance
+
+Replace dust suppression cartridges.
+
+Flush hydraulic reservoir.
+
+Run AI‐guided Core Purge.
+
+6.3 Monthly Maintenance
+
+Replace vibration dampening rings.
+
+Perform full torque calibration.
+
+Update firmware via AI Fleet Console.
+
+SECTION 7 — TROUBLESHOOTING MATRIX
+
+Issue
+
+Likely 
+
+AI 
+
+Field Fix
+
+Cause
+
+Diagnosti
+
+c Output
+
+Mast 
+
+Loose 
+
+Oscillation 
+
+Tighten 
+
+Oscillation
+
+clamps
+
+spike map
+
+clamps, 
+
+replace 
+
+rings
+
+Pressure 
+
+Micro‐leak Acoustic 
+
+Replace 
+
+Drop
+
+leak 
+
+hydraulic 
+
+signature
+
+line
+
+Depth 
+
+Sensor 
+
+Depth 
+
+Clean 
+
+Drift
+
+contamina
+
+variance 
+
+DMA‐4 
+
+tion
+
+graph
+
+array
+
+Torque 
+
+Coupling 
+
+Torque 
+
+Replace 
+
+Instability
+
+wear
+
+waveform 
+
+TT‐Series 
+
+distortion
+
+coupling
+
+SECTION 8 — TECHNICAL SPECIFICATIONS
+
+Torque Output: 12,000 Nm
+
+Max Bore Depth: 180 m
+
+Operating Temp: −20°C to 65°C
+
+Hydraulic Pressure: 9000 PSI
+
+Weight: 14,200 kg
+
+Power Source: Diesel‐Electric Hybrid
+
+
