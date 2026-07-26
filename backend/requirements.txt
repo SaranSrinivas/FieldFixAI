@@ -6,4 +6,3 @@ uvicorn==0.23.2
 pydantic==2.9.0
 pdfminer.six==20240706
 python-multipart==0.0.6
-sentence-transformers==3.0.1

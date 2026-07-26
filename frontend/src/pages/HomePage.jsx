@@ -243,6 +243,16 @@ function HomePage() {
             <>
               {catalogResults.map((item, index) => (
                 <div key={`catalog-${index}`} className="rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-950 to-slate-900 p-5">
+                  {item.image_url ? (
+                    <a href={`${API_BASE}${item.image_url}`} target="_blank" rel="noreferrer" className="mb-4 block overflow-hidden rounded-2xl border border-slate-800">
+                      <img
+                        src={`${API_BASE}${item.image_url}`}
+                        alt={`${item.label} render`}
+                        loading="lazy"
+                        className="h-40 w-full object-cover transition hover:opacity-80"
+                      />
+                    </a>
+                  ) : null}
                   <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{item.kind}</p>
                   <p className="mt-2 text-lg font-semibold text-white">{item.label}</p>
                   {item.machine ? <p className="mt-2 text-slate-400">Machine: {item.machine}</p> : null}

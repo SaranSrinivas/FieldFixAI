@@ -3,7 +3,8 @@ import sqlite3
 from pathlib import Path
 from typing import Any, Optional
 
-_MODEL = None
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 SAFETY_KEYWORDS = (
     "ppe", "lockout", "tagout", "safety", "caution", "hazard", "danger",
@@ -20,15 +21,6 @@ DIAGNOSTIC_KEYWORDS = (
 
 LOW_RELEVANCE_CUTOFF = 0.15
 MAX_ITEMS_PER_BUCKET = 4
-
-
-def _get_model():
-    global _MODEL
-    if _MODEL is None:
-        from sentence_transformers import SentenceTransformer
-
-        _MODEL = SentenceTransformer("all-MiniLM-L6-v2")
-    return _MODEL
 
 
 def _empty_buckets() -> dict[str, list[str]]:
@@ -82,14 +74,12 @@ def generate_suggestions(
     if not candidates:
         return buckets
 
-    model = _get_model()
-    from sentence_transformers import util
+    vectorizer = TfidfVectorizer(stop_words="english", ngram_range=(1, 2))
+    candidate_matrix = vectorizer.fit_transform(candidates)
+    issue_vector = vectorizer.transform([issue])
+    scores = candidate_matrix.dot(issue_vector.T).toarray().ravel()
 
-    issue_embedding = model.encode(issue, convert_to_tensor=True)
-    candidate_embeddings = model.encode(candidates, convert_to_tensor=True)
-    scores = util.cos_sim(issue_embedding, candidate_embeddings)[0]
-
-    ranked_indices = scores.argsort(descending=True).tolist()[:top_k]
+    ranked_indices = np.argsort(scores)[::-1][:top_k].tolist()
 
     seen_sentences: set[str] = set()
     for idx in ranked_indices:

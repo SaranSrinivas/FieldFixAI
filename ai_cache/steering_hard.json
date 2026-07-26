@@ -1,0 +1,20 @@
+{
+  "causes": [
+    "Begin controlled lift operations.",
+    "4.2 Loading Workflow\n\nMaintain hydraulic pressure between 4,200\u20134,800 PSI.",
+    "AI flags uneven load distribution before lift.",
+    "Use slow\u2010lift mode for high\u2010density material (ore, wet aggregate)."
+  ],
+  "temporary_fixes": [
+    "Replace hydraulic line if pressure drop exceeds 15%.",
+    "Grease articulation joint using GX\u2010Grade cartridges.",
+    "6.2 Weekly Maintenance\n\nReplace air filters."
+  ],
+  "diagnostics": [
+    "Check the power steering fluid level",
+    "Activate AI Steering Scan.",
+    "Inspect steering actuator for response delay >0.12 seconds.",
+    "Re\u2010run steering scan to confirm responsiveness."
+  ],
+  "safety_notes": []
+}

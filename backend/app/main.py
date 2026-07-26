@@ -296,6 +296,21 @@ def get_manuals() -> list[ManualInfo]:
     return [ManualInfo(**manual) for manual in manuals]
 
 
+@app.get("/machines/{machine_id}/image")
+def get_machine_image(machine_id: int) -> FileResponse:
+    with sqlite3.connect(MANUALS_DB_PATH) as conn:
+        row = conn.execute("SELECT image_path FROM machines WHERE id = ?", (machine_id,)).fetchone()
+
+    if not row or not row[0]:
+        raise HTTPException(status_code=404, detail="Image not found")
+
+    image_path = (ROOT_DIR / row[0]).resolve()
+    if MANUALS_DIR.resolve() not in image_path.parents or not image_path.is_file():
+        raise HTTPException(status_code=404, detail="Image not found")
+
+    return FileResponse(image_path)
+
+
 @app.get("/manuals/metadata", response_model=list[ManualMetadata])
 def get_manuals_metadata() -> list[ManualMetadata]:
     with sqlite3.connect(MANUALS_DB_PATH) as conn:

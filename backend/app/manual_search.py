@@ -465,7 +465,9 @@ def _fetch_catalog_rows(db_path: Path) -> list[dict[str, Any]]:
                 m.name AS machine_name,
                 m.category AS machine_category,
                 m.function AS machine_function,
-                m.motion_signature AS machine_motion_signature
+                m.motion_signature AS machine_motion_signature,
+                m.id AS machine_id,
+                m.image_path AS machine_image_path
             FROM components AS c
             LEFT JOIN animations AS a ON c.animation_id = a.id
             LEFT JOIN machines AS m ON a.machine_id = m.id
@@ -473,7 +475,7 @@ def _fetch_catalog_rows(db_path: Path) -> list[dict[str, Any]]:
         ).fetchall()
 
         machine_rows = conn.execute(
-            "SELECT id, name, category, function, motion_signature, description FROM machines"
+            "SELECT id, name, category, function, motion_signature, description, image_path FROM machines"
         ).fetchall()
 
         animation_rows = conn.execute(
@@ -502,6 +504,7 @@ def _fetch_catalog_rows(db_path: Path) -> list[dict[str, Any]]:
             "details": row[4] or row[2] or row[5],
             "tags": _split_tags(row[5], row[2], row[3], row[4]),
             "score": 0.0,
+            "image_url": f"/machines/{row[12]}/image" if row[13] else None,
         })
 
     machine_records = []
@@ -514,6 +517,7 @@ def _fetch_catalog_rows(db_path: Path) -> list[dict[str, Any]]:
             "details": row[3] or row[4] or row[5],
             "tags": _split_tags(row[2], row[4]),
             "score": 0.0,
+            "image_url": f"/machines/{row[0]}/image" if row[6] else None,
         })
 
     animation_records = []
@@ -560,6 +564,7 @@ def search_catalog(query: str, mode: str = "top_k", db_path: str | Path | None =
                 "details": record.get("details"),
                 "tags": tags,
                 "score": float(score),
+                "image_url": record.get("image_url"),
             })
         ranked.sort(key=lambda item: (-item["score"], item["label"].lower()))
         return ranked[:top_k]
@@ -601,6 +606,7 @@ def search_catalog(query: str, mode: str = "top_k", db_path: str | Path | None =
             "details": record.get("details"),
             "tags": record.get("tags", []),
             "score": round(float(score), 3),
+            "image_url": record.get("image_url"),
         })
 
     ranked.sort(key=lambda item: (-item["score"], item["label"].lower()))
