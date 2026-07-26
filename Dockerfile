@@ -1,37 +1,37 @@
-# ───────────────────────────────────────────────
-# Stage 1 — Build Frontend (React + Vite)
-# ───────────────────────────────────────────────
-FROM node:18 AS frontend-build
-
+FROM python:3.12-slim as backend
 WORKDIR /app
-COPY frontend/ .
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    poppler-utils \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY backend/requirements.txt ./backend/requirements.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt
+
+COPY backend/app ./backend/app
+
+FROM node:20-alpine as frontend
+WORKDIR /frontend
+COPY frontend/package.json frontend/package-lock.json* ./
 RUN npm install
+COPY frontend ./frontend
 RUN npm run build
 
-
-# ───────────────────────────────────────────────
-# Stage 2 — Build Backend (Python)
-# ───────────────────────────────────────────────
-FROM python:3.10-slim AS backend-build
-
+FROM python:3.12-slim
 WORKDIR /app
-COPY backend/ .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y --no-install-recommends poppler-utils && rm -rf /var/lib/apt/lists/*
+COPY --from=backend /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY --from=backend /usr/local/bin /usr/local/bin
+COPY --from=backend /app/backend ./backend
+COPY --from=frontend /frontend/dist ./frontend/dist
+COPY manuals ./manuals
 
+# Bake the sentence-transformers model into the image so first requests don't
+# stall on a runtime download and the container works without outbound
+# internet access after startup.
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
 
-# ───────────────────────────────────────────────
-# Stage 3 — Final Runtime Image
-# ───────────────────────────────────────────────
-FROM python:3.10-slim
-
-WORKDIR /app
-
-# Copy backend
-COPY --from=backend-build /app /app
-
-# Copy frontend build output
-COPY --from=frontend-build /app/dist /app/static
-
+ENV PORT=8000
 EXPOSE 8000
-
-CMD ["python", "backend/main.py"]
+CMD ["sh", "-c", "uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

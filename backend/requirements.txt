@@ -1,7 +1,9 @@
 numpy==1.26.4
 scikit-learn==1.7.2
 faiss-cpu==1.7.3
+fastapi==0.109.1
 uvicorn==0.23.2
 pydantic==2.9.0
 pdfminer.six==20240706
 python-multipart==0.0.6
+sentence-transformers==3.0.1
