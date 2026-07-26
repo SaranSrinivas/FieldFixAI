@@ -4,7 +4,8 @@ import { useAppState } from '../context/AppStateContext'
 import { ResultBlock } from '../components/ResultBlock'
 import { SymptomTypeahead } from '../components/SymptomTypeahead'
 import { TagChips } from '../components/TagChips'
-import { MicIcon, SearchIcon, SparklesIcon } from '../components/icons'
+import { DocumentIcon, MicIcon, NoteIcon, SearchIcon, SparklesIcon } from '../components/icons'
+import { DEFAULT_KIND_META, KIND_META, SUGGESTION_THEME } from '../theme'
 
 function HomePage() {
   const {
@@ -241,36 +242,88 @@ function HomePage() {
             </div>
           ) : (
             <>
-              {catalogResults.map((item, index) => (
-                <div key={`catalog-${index}`} className="rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-950 to-slate-900 p-5">
-                  {item.image_url ? (
-                    <a href={`${API_BASE}${item.image_url}`} target="_blank" rel="noreferrer" className="mb-4 block overflow-hidden rounded-2xl border border-slate-800">
-                      <img
-                        src={`${API_BASE}${item.image_url}`}
-                        alt={`${item.label} render`}
-                        loading="lazy"
-                        className="h-40 w-full object-cover transition hover:opacity-80"
-                      />
-                    </a>
-                  ) : null}
-                  <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{item.kind}</p>
-                  <p className="mt-2 text-lg font-semibold text-white">{item.label}</p>
-                  {item.machine ? <p className="mt-2 text-slate-400">Machine: {item.machine}</p> : null}
-                  {item.details ? <p className="mt-2 text-slate-300">{item.details}</p> : null}
-                  <TagChips tags={item.tags} onSelect={handleTagSelect} />
-                  <p className="mt-3 text-sm text-sky-400">Score: {item.score}</p>
-                </div>
-              ))}
-              {documentResults.map((match, index) => (
-                <div key={`document-${index}`} className="rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-950 to-slate-900 p-5">
-                  <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
-                    {match.source_type === 'tribal_knowledge'
-                      ? `Tribal knowledge${match.title ? ` · ${match.title}` : ''}`
-                      : `${match.filename ?? 'Manual'} · Page ${match.page}`}
-                  </p>
-                  <p className="mt-3 text-slate-100">{match.snippet}</p>
-                </div>
-              ))}
+              {catalogResults.map((item, index) => {
+                const meta = KIND_META[item.kind] ?? DEFAULT_KIND_META
+                const KindIcon = meta.icon
+                const barWidth = `${Math.max(4, Math.min(100, Math.round((item.score ?? 0) * 100)))}%`
+
+                return (
+                  <div
+                    key={`catalog-${index}`}
+                    className="micro-card panel-sheen overflow-hidden rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-950 to-slate-900"
+                  >
+                    {item.image_url ? (
+                      <a href={`${API_BASE}${item.image_url}`} target="_blank" rel="noreferrer" className="group relative block h-44 overflow-hidden">
+                        <img
+                          src={`${API_BASE}${item.image_url}`}
+                          alt={`${item.label} render`}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                        />
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent" />
+                        <span
+                          className={`absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] backdrop-blur ${meta.badge}`}
+                        >
+                          <KindIcon className="h-3.5 w-3.5" />
+                          {meta.label}
+                        </span>
+                      </a>
+                    ) : (
+                      <div className="pt-5" />
+                    )}
+
+                    <div className="p-5 pt-4">
+                      {!item.image_url ? (
+                        <span
+                          className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] ${meta.badge}`}
+                        >
+                          <KindIcon className="h-3.5 w-3.5" />
+                          {meta.label}
+                        </span>
+                      ) : null}
+                      <p className="mt-3 text-lg font-semibold text-white">{item.label}</p>
+                      {item.machine ? <p className="mt-1 text-sm text-slate-400">Machine: {item.machine}</p> : null}
+                      {item.details ? <p className="mt-2 text-slate-300">{item.details}</p> : null}
+                      <TagChips tags={item.tags} onSelect={handleTagSelect} />
+                      <div className="mt-4 flex items-center gap-3">
+                        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-800">
+                          <div className={`h-full rounded-full ${meta.bar}`} style={{ width: barWidth }} />
+                        </div>
+                        <span className="shrink-0 text-xs font-medium text-slate-400">Score {item.score}</span>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+              {documentResults.map((match, index) => {
+                const isTribal = match.source_type === 'tribal_knowledge'
+                const SourceIcon = isTribal ? NoteIcon : DocumentIcon
+
+                return (
+                  <div
+                    key={`document-${index}`}
+                    className={`micro-card panel-sheen rounded-3xl border bg-gradient-to-br from-slate-950 to-slate-900 p-5 ${
+                      isTribal ? 'border-emerald-800/50' : 'border-sky-800/50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <span
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl ${
+                          isTribal ? 'bg-emerald-500/15 text-emerald-300' : 'bg-sky-500/15 text-sky-300'
+                        }`}
+                      >
+                        <SourceIcon className="h-4 w-4" />
+                      </span>
+                      <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
+                        {isTribal
+                          ? `Tribal knowledge${match.title ? ` · ${match.title}` : ''}`
+                          : `${match.filename ?? 'Manual'} · Page ${match.page}`}
+                      </p>
+                    </div>
+                    <p className="mt-3 text-slate-100">{match.snippet}</p>
+                  </div>
+                )
+              })}
             </>
           )}
         </div>
@@ -321,10 +374,25 @@ function HomePage() {
           <div className="mt-5 space-y-5">
             {suggestions ? (
               <>
-                <ResultBlock title="Causes" items={suggestions.causes} />
-                <ResultBlock title="Temporary Fixes" items={suggestions.temporary_fixes} />
-                <ResultBlock title="Diagnostics" items={suggestions.diagnostics} />
-                <ResultBlock title="Safety Notes" items={suggestions.safety_notes} />
+                <ResultBlock title="Causes" items={suggestions.causes} icon={SUGGESTION_THEME.causes.icon} accent={SUGGESTION_THEME.causes} />
+                <ResultBlock
+                  title="Temporary Fixes"
+                  items={suggestions.temporary_fixes}
+                  icon={SUGGESTION_THEME.temporary_fixes.icon}
+                  accent={SUGGESTION_THEME.temporary_fixes}
+                />
+                <ResultBlock
+                  title="Diagnostics"
+                  items={suggestions.diagnostics}
+                  icon={SUGGESTION_THEME.diagnostics.icon}
+                  accent={SUGGESTION_THEME.diagnostics}
+                />
+                <ResultBlock
+                  title="Safety Notes"
+                  items={suggestions.safety_notes}
+                  icon={SUGGESTION_THEME.safety_notes.icon}
+                  accent={SUGGESTION_THEME.safety_notes}
+                />
               </>
             ) : (
               <div className="rounded-3xl border border-dashed border-slate-700 bg-slate-900/70 p-6 text-slate-400">

@@ -1,0 +1,19 @@
+{
+  "causes": [
+    "Power on hydraulic system.",
+    "Run AI\u2010Assisted Pressure Calibration (9 seconds).",
+    "Engage flow control valve.",
+    "Begin controlled impact operations."
+  ],
+  "temporary_fixes": [
+    "Replace pressure accumulator if pressure drop exceeds 18%.",
+    "Grease strike rod using HX\u2010Grade lubricant."
+  ],
+  "diagnostics": [
+    "Activate AI Impact Scan.",
+    "Inspect piston for wear >25%.",
+    "Re\u2010run impact scan to confirm force restoration.",
+    "SECTION 6 \u2014 MAINTENANCE\n\n6.1 Daily Maintenance\n\nInspect strike rod and housing."
+  ],
+  "safety_notes": []
+}
