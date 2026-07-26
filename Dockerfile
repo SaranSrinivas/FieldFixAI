@@ -15,7 +15,7 @@ FROM node:20-alpine as frontend
 WORKDIR /frontend
 COPY frontend/package.json frontend/package-lock.json* ./
 RUN npm install
-COPY frontend ./frontend
+COPY frontend/. ./
 RUN npm run build
 
 FROM python:3.12-slim
