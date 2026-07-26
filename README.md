@@ -58,4 +58,4 @@ Open http://localhost:8000 — the UI and API are served from the same origin.
 2. Choose **Docker** as the runtime (Render will detect the `Dockerfile` at the repo root).
 3. No extra environment variables are required — Render sets `PORT` automatically and the container's `CMD` binds to it.
 4. Note that the container's filesystem is ephemeral: any manuals/tribal notes uploaded at runtime, and the `ai_cache/` directory, will be reset on redeploy or restart. Attach a [Render persistent disk](https://render.com/docs/disks) if that data needs to survive.
-5. The bundled `sentence-transformers` model is baked into the image at build time, but the dependency stack (torch, faiss, scikit-learn) is heavy — pick an instance type with at least 2 GB RAM.
+5. Search and AI suggestions run on scikit-learn TF-IDF (plus optional faiss) — no GPU/ML runtime is baked in, so the free/starter instance tier's 512MB RAM is sufficient.

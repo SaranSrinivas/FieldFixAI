@@ -27,11 +27,6 @@ COPY --from=backend /app/backend ./backend
 COPY --from=frontend /frontend/dist ./frontend/dist
 COPY manuals ./manuals
 
-# Bake the sentence-transformers model into the image so first requests don't
-# stall on a runtime download and the container works without outbound
-# internet access after startup.
-RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
-
 ENV PORT=8000
 EXPOSE 8000
 CMD ["sh", "-c", "uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
