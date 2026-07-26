@@ -34,4 +34,4 @@ COPY --from=frontend-build /app/dist /app/static
 
 EXPOSE 8000
 
-CMD ["python", "backend/main.py"]
+CMD ["python", "backend/app/main.py"]
