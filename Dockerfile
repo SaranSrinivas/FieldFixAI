@@ -26,7 +26,7 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copy backend from Stage 2
+# Copy backend
 COPY --from=backend-build /app /app
 
 # Copy frontend build output
@@ -34,4 +34,4 @@ COPY --from=frontend-build /app/dist /app/static
 
 EXPOSE 8000
 
-CMD ["python", "backend/app/main.py"]
+CMD ["python", "backend/main.py"]
